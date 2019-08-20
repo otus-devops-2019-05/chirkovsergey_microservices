@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  post_db:
+    image: mongo:${version_mongodb}
+    volumes:
+      - post_db:/data/db
+    networks:
+      - reddit_back
+  ui:
+    build: ./ui
+    image: ${USERNAME}/ui:${version_ui}
+    ports:
+      - ${ui_port}:9292/tcp
+    networks:
+      - reddit_front
+  post:
+    build: ./post-py
+    image: ${USERNAME}/post:${version_post}
+    networks:
+      - reddit_back
+      - reddit_front
+  comment:
+    build: ./comment
+    image: ${USERNAME}/comment:${version_comment}
+    networks:
+      - reddit_back
+      - reddit_front
+volumes:
+  post_db:
+
+networks:
+  reddit_front:
+      driver: bridge
+  reddit_back:
+      driver: bridge
+      
