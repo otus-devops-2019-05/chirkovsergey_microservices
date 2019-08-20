@@ -10,7 +10,7 @@ services:
     build: ./ui
     image: ${USERNAME}/ui:${version_ui}
     ports:
-      - ${ui_port}:9292/tcp
+      - ${ui_port}
     networks:
       - reddit_front
   post:
