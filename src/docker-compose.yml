@@ -5,32 +5,30 @@ services:
     volumes:
       - post_db:/data/db
     networks:
-      - reddit_back
+      - back_net 
   ui:
     build: ./ui
     image: ${USERNAME}/ui:${version_ui}
     ports:
       - ${ui_port}
     networks:
-      - reddit_front
+      - front_net
   post:
     build: ./post-py
     image: ${USERNAME}/post:${version_post}
     networks:
-      - reddit_back
-      - reddit_front
+      - back_net
+      - front_net
   comment:
     build: ./comment
     image: ${USERNAME}/comment:${version_comment}
     networks:
-      - reddit_back
-      - reddit_front
+      - back_net
+      - front_net
 volumes:
   post_db:
 
 networks:
-  reddit_front:
-      driver: bridge
-  reddit_back:
-      driver: bridge
-      
+  back_net:
+  front_net:
+
