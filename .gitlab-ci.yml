@@ -33,5 +33,5 @@ deploy_dev_job:
   script:
     - echo 'Deploy'
   environment:
-  name: dev
-  url: http://dev.example.com
+    name: dev
+    url: http://dev.example.com
