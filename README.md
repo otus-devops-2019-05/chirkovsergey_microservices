@@ -96,3 +96,4 @@ chirkovsergey microservices repository
 ## PR checklist
  - [x] Выставил label с номером домашнего задания
  - [x] Выставил label с темой домашнего задания
+
